@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useSelector } from 'react-redux';
 import './App.css';
+import Form from './components/Form';
+import { StateI } from './store/actions/todoActionTypes';
+import Todos from './components/Todos';
+type selectorState = {
+  todoRecuder: StateI
+}
 
 function App() {
+  const items = useSelector((state: selectorState) => state.todoRecuder.items)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form />
+      <Todos items={items} />
     </div>
   );
 }
