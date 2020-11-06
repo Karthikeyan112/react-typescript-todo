@@ -9,7 +9,9 @@ const Form = () => {
 
   const submitForm = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    dispatch(addTodo({ id: uuidv4(), name: task, isActive: false }));
+    if (task !== '') {
+      dispatch(addTodo({ id: uuidv4(), name: task, isActive: false, isEditable: false }));
+    }
     setTask('');
   }
   return (
